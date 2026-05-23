@@ -1,7 +1,8 @@
-const API_BASE_URL = "http://localhost:5000";
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
 export async function generateAiAnswer(requestText: string) {
-  const response = await fetch(`${API_BASE_URL}/ai/generate`, {
+  const response = await fetch(`${API_URL}/ai/generate`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -21,7 +22,7 @@ export async function updateAiResponseStatus(
   status: string
 ) {
   const response = await fetch(
-    `${API_BASE_URL}/ai-responses/${aiResponseId}/status`,
+    `${API_URL}/ai-responses/${aiResponseId}/status`,
     {
       method: "PATCH",
       headers: {
@@ -43,7 +44,7 @@ export async function updateAiResponseText(
   generatedText: string
 ) {
   const response = await fetch(
-    `${API_BASE_URL}/ai-responses/${aiResponseId}/text`,
+    `${API_URL}/ai-responses/${aiResponseId}/text`,
     {
       method: "PATCH",
       headers: {
@@ -60,7 +61,7 @@ export async function updateAiResponseText(
   return response.json();
 }
 export async function getHistory() {
-  const response = await fetch(`${API_BASE_URL}/history`);
+  const response = await fetch(`${API_URL}/history`);
 
   if (!response.ok) {
     throw new Error("Failed to load history");
@@ -69,7 +70,7 @@ export async function getHistory() {
   return response.json();
 }
 export async function getAiResponseById(aiResponseId: number) {
-  const response = await fetch(`${API_BASE_URL}/ai-responses/${aiResponseId}`);
+  const response = await fetch(`${API_URL}/ai-responses/${aiResponseId}`);
 
   if (!response.ok) {
     throw new Error("Failed to load AI response");
@@ -78,7 +79,7 @@ export async function getAiResponseById(aiResponseId: number) {
   return response.json();
 }
 export async function getDashboardStats() {
-  const response = await fetch(`${API_BASE_URL}/dashboard/stats`);
+  const response = await fetch(`${API_URL}/dashboard/stats`);
 
   if (!response.ok) {
     throw new Error("Failed to load dashboard stats");
@@ -88,7 +89,7 @@ export async function getDashboardStats() {
 }
 
 export async function loginUser(email: string, password: string) {
-  const response = await fetch(`${API_BASE_URL}/login`, {
+  const response = await fetch(`${API_URL}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -113,7 +114,7 @@ export async function loginUser(email: string, password: string) {
 
 export async function getKnowledgeEntries() {
   const response = await fetch(
-    `${API_BASE_URL}/knowledge`
+    `${API_URL}/knowledge`
   );
 
   if (!response.ok) {
