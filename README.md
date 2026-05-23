@@ -386,4 +386,4 @@ Sultan Aydin
 
 Gibb HF – Informatik
 
-LB2 Cloud Deployment Projekt-2026
+LB2 Cloud Deployment Projekt
