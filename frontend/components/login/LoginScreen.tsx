@@ -9,7 +9,7 @@ export default function LoginScreen() {
   const router = useRouter();
 
   const [email, setEmail] = useState("sultan@test.com");
-  const [password, setPassword] = useState("testhash123");
+  const [password, setPassword] = useState("123456");
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
