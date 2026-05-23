@@ -54,8 +54,11 @@ jobs:
       - name: Install frontend dependencies
         run: npm install
 
+      - name: Lint frontend
+        run: npm run lint
+
       - name: Build frontend
         run: npm run build
 
       - name: Build frontend Docker image
-        run: docker build -t salesassistant-frontend .
+        run: docker build --build-arg NEXT_PUBLIC_API_URL=https://lb2-salesassistant-backend.onrender.com -t salesassistant-frontend .
